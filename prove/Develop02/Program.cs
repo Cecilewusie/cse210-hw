@@ -1,98 +1,84 @@
 using System;
-using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 class Program
 {
     static void Main(string[] args)
-
     {   
-        //creating an empty list to hold various datas
-        List<string> randomEntry = new List<string>();
-        //List<string> dateAlong = new List<string>();
+        //OBJECTS OR INSTANCES CREATION
 
-        //creating an instance and object for the Entry class
-        Entry getEntry = new Entry();       
-        getEntry._usersEntry = randomEntry;
-        //getEntry._addDate = dateAlong;
+        //menuobject
+        Menu menuObj = new Menu();
+        
+        //entry object
+        
 
-        //string filename = "";
-        //List<Entry> toBeSaved = new List<Entry>();
+        //jounal object
+        Journal journalObj = new Journal();
 
-        //creating an instance and object for the journal class
-        Journal newJournal = new Journal();
-        //newJournal._filename = filename;
-        //newJournal._entry.Add(toBeSaved);
+        //PromptGenerator Object
+        PromtGenrator promtGenratorObj = new PromtGenrator();
 
+        //calling date
+        DateTime theCurrent  = DateTime.Now;
 
-
-
-        int userEntryConverted = 0;
-
-        while (userEntryConverted < 5)
+        
+        int userAction = 0;
+        while (userAction < 5)
         {
-            Console.WriteLine("Hello Welcome to myJournal Made Easy");
-            Console.WriteLine("<< Please choose an action");
-            Console.WriteLine("1. Write");
-            Console.WriteLine("2. Display");
-            Console.WriteLine("3. Load");
-            Console.WriteLine("4. Save");
-            Console.WriteLine("5. Quit");
-            Console.Write("Enter just the number of the action.");
-            string userEntry = Console.ReadLine();
-            userEntryConverted = int.Parse(userEntry);
-        
-                 
-        
-            if (userEntryConverted == 1)
+            //calling the bringMenu method and storing its return value in userAction variable
+            userAction = menuObj.bringMenu();
+
+            if (userAction == 1)
             {   
-                //calling the getRandomQuestion and saving the question in a variable named randQ
-                string randQ = getEntry.getRandomQuestion();
+                Entry entryObj = new Entry();
 
-                //printing the random question to the user
-                Console.WriteLine(randQ);
+                //assigning the value of _date
+                string dateText = theCurrent.ToShortDateString();
+                entryObj._date = dateText;
 
-                //getting the users reply
-                string prompAnswer = Console.ReadLine();
-                
-                //adding prompAnswer to a list
-                //randomEntry.Add(prompAnswer);
+                //getting the promtText and assigning value to the _promtText variable in the Entry class
+                string promtQues = promtGenratorObj.getRandomPrompt();
+                Console.WriteLine(promtQues);
+                string promptReply = Console.ReadLine();
 
-                //calling the date time object
-                DateTime theCurrentDateAndTime = DateTime.Now;
-                string dateText = theCurrentDateAndTime.ToShortDateString();
+                //assigning the promptReply as a value for _entryText variable in the Entry class
+                entryObj._entryText = promptReply;
 
-                //adding date to a list on its own
-                //dateAlong.Add(dateText);
+                //assigning the promptQuest as a value for the _promtText
+                entryObj._promtText = promtQues;
 
-                string dateRandomQuestionPrompAnswer = ($"{dateText} - {randQ} {prompAnswer}");
 
-                randomEntry.Add(dateRandomQuestionPrompAnswer);
-            
+                journalObj.AddEntry(entryObj);
             }
 
-            else if (userEntryConverted == 2)
+            else if (userAction == 2)
             {
-                getEntry.displayUserEntry();
+                journalObj.DisplayAll();
             }
 
-            else if (userEntryConverted == 3)
+            else if (userAction == 4)
             {
-                newJournal.ReadSavedFile();
+                //getting name of the file
+                Console.WriteLine("Please enter the name of the file you want to save to (without file type eg,csv,txt etc): ");
+                string rawName = Console.ReadLine();
+                string fileName = $"{rawName}.txt";
+
+                //assigning value to the SaveFromFile method
+                journalObj.SaveToFile(fileName);
+
             }
-            
-            else if (userEntryConverted == 4)
+
+            else if (userAction == 3)
             {
-                Console.WriteLine("Please enter the name of the file you want to save to:");
-                string filename = Console.ReadLine();
-                newJournal._filename = filename;
-                //toBeSaved.Add(getEntry);
-                newJournal._entry.Add(getEntry);
+                Console.WriteLine("Enter name of file you want to load from (without file type eg,csv,txt etc): ");
+                string rawName = Console.ReadLine();
+                string fileName = $"{rawName}.txt";
 
-                //newJournal.SaveToFIle(newJournal._entry);
-                newJournal.SaveToFIle();
-
+                //assigning value to the SaveFromFile method
+                journalObj.LoadFromFile(fileName);                
             }
-            
+
 
         }
     }
