@@ -1,6 +1,11 @@
 using System;
 using System.Runtime.CompilerServices;
 
+//EXCEEDED REQUIREMENTS BY
+//1. Adding one more prompt to the user
+//2. Including exception handling in the journal file to catch FileNotFoundError
+
+
 class Program
 {
     static void Main(string[] args)
@@ -22,7 +27,7 @@ class Program
         //calling date
         DateTime theCurrent  = DateTime.Now;
 
-        
+         
         int userAction = 0;
         while (userAction < 5)
         {
