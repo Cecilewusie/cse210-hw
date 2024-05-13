@@ -6,7 +6,20 @@ public class Scripture
     public Scripture(Reference reference, string text)
     {
         _reference = reference;
-        _words = text.Split(' ').Select(word => new Word(word)).ToList();
+        _words = new List<Word>();
+
+
+        //getting the word text in an array and splitting them with a space
+        string[] wordArray = text.Split(' ');
+
+        /*-creating a new word object with the Word class or blueprint, 
+        -iterating through every word in wordArray and injecting it into new word object, 
+        -eventually assigning all the word objects to a list */
+        foreach (string wordText in wordArray)
+        {
+            Word word = new Word(wordText);
+            _words.Add(word);
+        }
     }
 
     public void HideRandomWord(int numberToHide)
@@ -21,11 +34,28 @@ public class Scripture
 
     public string GetDisplayText()
     {
-        return $"{_reference.GetDisplayText()}: {_words.Aggregate("", (current, word) => current + word.GetDisplayText() + " ")}";
+        string referenceText = _reference.GetDisplayText();
+        string wordsText = "";
+
+        foreach (var word in _words)
+        {
+            wordsText += word.GetDisplayText() + " ";
+        }
+ 
+        return referenceText + ": " + wordsText.Trim();
     }
 
-    public bool IsCompletelyHidden()
+
+public bool IsCompletelyHidden()
+{
+    foreach (var word in _words)
     {
-        return _words.All(word => word.IsHidden());
+        if (!word.IsHidden())
+        {
+            return false;
+        }
     }
+    return true;
+}
+
 }
