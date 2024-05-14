@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 
 class Program
-{
+{   
     static void Main(string[] args)
-    {
+    {   
+        //EXCEEDED REQUIREMENTS
+        //Made the program so the user manually inputs their scripture they prefer to memorize
+
+        
 
         Console.WriteLine("WELCOME TO SCRIPTURE MEMORIZER APP");
 
