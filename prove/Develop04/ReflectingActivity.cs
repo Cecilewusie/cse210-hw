@@ -102,6 +102,7 @@ public class ReflectingActivity : Activity
             ShowSpinner(2000);
         }
         Console.WriteLine();
+        ShowSpinner(1000);
         DispalyEndingMessage();
     }
 }

@@ -1,12 +1,19 @@
 using System;
 
+//EXCEEDED REQUIREMENTS BY:
+//1- Making sure no question or prompts is repeated in the reflectingActivity Class
+//2 - Keeping track of all the activies done and displaying it when the program ends
+//3 - Made new class ActivityInfo to hold all the values to be given to the constructors
+
+
 class Program
 {
     static void Main(string[] args)
     {
         int userAction = 0;
 
-        int numACtivities = 0;
+        //kepping track of how many activities is performed
+        int numOfActivities = 0;
 
         while (userAction < 5)
         {
@@ -20,8 +27,10 @@ class Program
             if (userAction == 1)
             {
                 BreathingActivity breathingActivity = new BreathingActivity(activityInfo.GetName(), activityInfo.GetMessage(), activityInfo.GetEndingMessage());
+                Console.Clear();
                 breathingActivity.DisplayStartingMessage();
                 Console.WriteLine();
+                Console.Clear();
                 //calling the run method
                 breathingActivity.Run();   
             }
@@ -29,6 +38,7 @@ class Program
             if (userAction == 2)
             {
                 ReflectingActivity reflectingActivity = new ReflectingActivity(activityInfo.GetName(), activityInfo.GetMessage(), activityInfo.GetEndingMessage());
+                Console.Clear();
                 reflectingActivity.DisplayStartingMessage();
                 Console.WriteLine();
 
@@ -39,8 +49,10 @@ class Program
             if (userAction == 3)
             {
                 ListingActivity listingActivity = new ListingActivity(activityInfo.GetName(), activityInfo.GetMessage(), activityInfo.GetEndingMessage());
+                Console.Clear();
                 listingActivity.DisplayStartingMessage();
                 Console.WriteLine();
+                Console.Clear();
 
                 //calling the run method in the listing Activity class
                 listingActivity.Run();                
@@ -51,11 +63,11 @@ class Program
                 break;
             }
 
-            numACtivities++;
+            numOfActivities++;
         }
 
         Console.WriteLine();
-        Console.WriteLine($"You successfully performed {numACtivities}, well done");
+        Console.WriteLine($"You successfully performed {numOfActivities} activities, well done");
 
     }
 }
