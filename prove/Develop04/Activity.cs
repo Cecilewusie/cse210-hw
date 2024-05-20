@@ -8,22 +8,31 @@ public class Activity
 
     private string _name;
     private string _description;
-    private int _duration;
+    protected int _duration;
     private string _endingMessage;
 
-    public Activity(string name,string description, int duration, string endingMessage)
+    public Activity(string name,string description, string endingMessage)
     {
         _name = name;
         _description = description;
-        _duration = duration;
         _endingMessage = endingMessage;
     }
 
     //behaviors or methods
     public void DisplayStartingMessage()
     {
-        Console.WriteLine(_name);
+        Console.WriteLine(_name.ToUpper());
+
+        Console.WriteLine();
         Console.WriteLine(_description);
+
+        Console.WriteLine();
+        Console.WriteLine("How long in seconds, do you want to hold this session eg 30: ");
+        string  duration = Console.ReadLine();
+        int durationInt = int.Parse(duration);
+        _duration = durationInt;
+        Console.WriteLine($"your program is going to last {_duration} seconds");       
+
     }
     public void DispalyEndingMessage()
     {
@@ -43,10 +52,10 @@ public class Activity
         AnimationSpin.Add("\\");
 
         DateTime StartTime = DateTime.Now;
-        DateTime EndTIme = StartTime.AddSeconds(8);
+        DateTime EndTime = StartTime.AddSeconds(8);
 
         int i = 0;
-        while (StartTime < EndTIme)
+        while (StartTime < EndTime)
         {
             string s = AnimationSpin[i];
             Console.Write(s);
@@ -56,7 +65,7 @@ public class Activity
 
             if (i == AnimationSpin.Count)
             {
-                i = 0; 
+                break; 
             }
         }
 

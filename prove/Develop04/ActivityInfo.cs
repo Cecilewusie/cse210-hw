@@ -11,15 +11,6 @@ public class ActivityInfo
         _action = action;
     }
 
-    public int GetDuration()
-    {
-
-        Console.WriteLine("Enter the duration of the program. eg 30: ");
-        string  duration = Console.ReadLine();
-        int durationInt = int.Parse(duration);
-        return durationInt;
-
-    }    
 
     public string GetName()
     {
@@ -57,6 +48,6 @@ public class ActivityInfo
 
     public string GetEndingMessage()
     {
-        return "Goodluck, you did a great job.";
+        return "Well Done, you did a great job.";
     }
 }
