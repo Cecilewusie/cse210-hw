@@ -1,13 +1,13 @@
 using System;
 
-//EXCEEDED REQUIREMENTS BY:
-//1- Making sure no question or prompts is repeated in the reflectingActivity Class
-//2 - Keeping track of all the activies done and displaying it when the program ends
-//3 - Made new class ActivityInfo to hold all the values to be given to the constructors
-
 
 class Program
 {
+    //EXCEEDED REQUIREMENTS BY:
+    //1- Making sure no question or prompts is repeated in the reflectingActivity Class
+    //2 - Keeping track of all the activies done and displaying it when the program ends
+    //3 - Made new class ActivityInfo to hold all the values to be given to the constructors
+
     static void Main(string[] args)
     {
         int userAction = 0;
