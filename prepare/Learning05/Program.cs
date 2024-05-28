@@ -21,7 +21,7 @@ class Program
             double disshape = sh.GetArea();
             string discolor = sh.GetColor();
 
-            Console.WriteLine($"{discolor} color is {disshape} area.");
+            Console.WriteLine($"The {discolor} color has an area of {disshape}.");
         }
     }
 }
