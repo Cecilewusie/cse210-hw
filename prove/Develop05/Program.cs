@@ -4,6 +4,9 @@ using System.Diagnostics;
 
 class Program
 {
+    //EXCEEDED REQUIREMENTS
+    //Added some countdowns when the load and save goal is called to make console look presentable
+
     static void Main(string[] args)
     {   
         GoalManager goalManager = new GoalManager();

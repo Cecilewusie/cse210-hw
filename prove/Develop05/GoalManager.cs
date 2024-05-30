@@ -118,7 +118,12 @@ public class GoalManager
 
     public void SaveGoals()
     {
+        Console.Clear();
         Console.WriteLine();
+        Console.Write("preparing to save");
+        ShowCountDown();
+        Console.WriteLine();
+        
         Console.WriteLine("Enter the name of the file youb want to save to without the filetype(txt,csv etc): ");
         string raw = Console.ReadLine();
         string filename = $"{raw}.txt";
@@ -216,7 +221,6 @@ public class GoalManager
                     break;
             }
         }
-        ShowCountDown();
         Console.WriteLine("Goals loaded successfully.");
     }
     public void ShowCountDown()
