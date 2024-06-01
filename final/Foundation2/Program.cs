@@ -14,11 +14,7 @@ class Program
         Order order1 = new Order(customer1);
         order1.AddProduct(flowers);
         order1.AddProduct(hangers);
-        order1.AddProduct(shoes);
-        // Console.WriteLine("Total cost of order:");
-        // Console.WriteLine(order1.CalculateTotalCostOfOrder());
-        // Console.WriteLine("Shipping label");
-        // Console.WriteLine(order1.GenerateShippingLabel());        
+        order1.AddProduct(shoes);        
 
 
         //second scenario
@@ -36,10 +32,10 @@ class Program
         Address address3 = new Address("75012 Paris Cedex 14", "Paris", "FR", "France");
         Customer customer3 = new Customer("Kylian Mpape", address3);
         Product jersey = new Product("Paris Home Jersey", 22147, 150, 1);
-        Product SkinGuard = new Product("Shoes", 22148, 200, 2);        
+        Product ShinGuard = new Product("Shin Guard ", 22148, 200, 2);        
         Order order3 = new Order(customer3);
         order3.AddProduct(jersey);
-        order3.AddProduct(SkinGuard);  
+        order3.AddProduct(ShinGuard);  
 
         List<Order> orders = new List<Order>();
         orders.Add(order1);
